@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/pkl/static/css/main.cbe6dc92.css",
+    "main.js": "/pkl/static/js/main.f2be64b9.js",
+    "static/js/787.c4e7f8f9.chunk.js": "/pkl/static/js/787.c4e7f8f9.chunk.js",
+    "index.html": "/pkl/index.html",
+    "main.cbe6dc92.css.map": "/pkl/static/css/main.cbe6dc92.css.map",
+    "main.f2be64b9.js.map": "/pkl/static/js/main.f2be64b9.js.map",
+    "787.c4e7f8f9.chunk.js.map": "/pkl/static/js/787.c4e7f8f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cbe6dc92.css",
+    "static/js/main.f2be64b9.js"
+  ]
+}
