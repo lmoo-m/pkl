@@ -6,6 +6,7 @@ import ListCard from "./components/ListCard";
 
 function App() {
     const [showInput, setShowInput] = useState(false);
+    localStorage.setItem("jurnal", []);
     return (
         <Box
             component={"div"}
