@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 
 export const getJurnal = (jurnal) => {
-    const data = localStorage.getItem("jurnal");
+    const data = localStorage.getItem("jurnal") || [];
     jurnal(JSON.parse(data));
 };
 
