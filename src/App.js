@@ -6,6 +6,7 @@ import ListCard from "./components/ListCard";
 
 function App() {
     const [showInput, setShowInput] = useState(false);
+    const [search, setSearch] = useState("");
     const [jurnals, setJurnals] = useState(() => {
         const localValue = localStorage.getItem("jurnal");
         if (localValue === null) return [];
@@ -34,13 +35,23 @@ function App() {
             ) : (
                 ""
             )}
-            <Button
-                variant="contained"
-                sx={{ marginTop: "30px" }}
-                onClick={() => setShowInput(true)}
+            <Box
+                sx={{
+                    marginTop: "30px",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    width: "50%",
+                }}
             >
-                Tambah
-            </Button>
+                <input
+                    className="search"
+                    placeholder="cari..."
+                    onChange={(e) => setSearch(e.target.value)}
+                />
+                <Button variant="contained" onClick={() => setShowInput(true)}>
+                    Tambah
+                </Button>
+            </Box>
             <Box
                 sx={{
                     mt: 3,
@@ -50,7 +61,11 @@ function App() {
                     justifyContent: "center",
                 }}
             >
-                <ListCard jurnals={jurnals} setJurnals={setJurnals} />
+                <ListCard
+                    jurnals={jurnals}
+                    setJurnals={setJurnals}
+                    search={search}
+                />
             </Box>
         </Box>
     );
