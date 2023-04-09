@@ -47,7 +47,7 @@ const ListCard = ({ jurnals, setJurnals, search }) => {
                         ) {
                             return jurnal;
                         } else {
-                            return jurnal;
+                            return;
                         }
                     })
                     .map((data, i) => {
