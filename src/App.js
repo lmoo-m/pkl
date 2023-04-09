@@ -6,7 +6,7 @@ import ListCard from "./components/ListCard";
 
 function App() {
     const [showInput, setShowInput] = useState(false);
-    localStorage.setItem("jurnal", []);
+    localStorage.setItem("jurnal", JSON.stringify([]));
     return (
         <Box
             component={"div"}
