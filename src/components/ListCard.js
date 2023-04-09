@@ -20,7 +20,15 @@ const ListCard = ({ jurnals, setJurnals }) => {
                 jurnals.map((data, i) => {
                     return (
                         <Card
-                            sx={{ minWidth: 275, padding: "10px 15px" }}
+                            sx={{
+                                minWidth: 275,
+                                maxWidth: 275,
+                                padding: "10px 15px",
+                                overflowWrap: "break-word",
+                                display: "flex",
+                                flexDirection: "column",
+                                justifyContent: "center",
+                            }}
                             key={i}
                         >
                             <CardContent>
