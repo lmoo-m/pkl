@@ -1,12 +1,21 @@
 import "./App.css";
 import { Box, Button } from "@mui/material";
 import FormInput from "./components/FormInput";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ListCard from "./components/ListCard";
 
 function App() {
     const [showInput, setShowInput] = useState(false);
-    localStorage.setItem("jurnal", JSON.stringify([]));
+    const [jurnals, setJurnals] = useState(() => {
+        const localValue = localStorage.getItem("jurnal");
+        if (localValue === null) return [];
+        return JSON.parse(localValue);
+    });
+
+    useEffect(() => {
+        localStorage.setItem("jurnal", JSON.stringify(jurnals));
+    }, [jurnals]);
+
     return (
         <Box
             component={"div"}
@@ -17,7 +26,14 @@ function App() {
                 height: "100vh",
             }}
         >
-            {showInput ? <FormInput setShowInput={setShowInput} /> : ""}
+            {showInput ? (
+                <FormInput
+                    setShowInput={setShowInput}
+                    setJurnals={setJurnals}
+                />
+            ) : (
+                ""
+            )}
             <Button
                 variant="contained"
                 sx={{ marginTop: "30px" }}
@@ -34,7 +50,7 @@ function App() {
                     justifyContent: "center",
                 }}
             >
-                <ListCard />
+                <ListCard jurnals={jurnals} setJurnals={setJurnals} />
             </Box>
         </Box>
     );

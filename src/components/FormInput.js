@@ -1,22 +1,23 @@
 import React, { useState } from "react";
 import { TextField, CardActions, Button, Card } from "@mui/material";
 import { generateDate } from "./dateFunction";
+import { nanoid } from "nanoid";
 
-const FormInput = ({ setShowInput }) => {
+const FormInput = ({ setShowInput, setJurnals }) => {
     const [kegiatan, setKegiatan] = useState("");
     const [waktu, setWaktu] = useState("");
-    const data = localStorage.getItem("jurnal") || [];
-    const jurnal = JSON.parse(data);
 
     const tambah = () => {
         const data = {
+            id: nanoid(),
             kegiatan: kegiatan,
             waktu: waktu,
             tanggal: generateDate(),
         };
 
-        jurnal.push(data);
-        localStorage.setItem("jurnal", JSON.stringify(jurnal));
+        setJurnals((prev) => {
+            return [...prev, data];
+        });
         setShowInput(false);
     };
 
