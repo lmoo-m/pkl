@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Box, Button } from "@mui/material";
+import FormInput from "./components/FormInput";
+import { useState } from "react";
+import ListCard from "./components/ListCard";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    const [showInput, setShowInput] = useState(false);
+    return (
+        <Box
+            component={"div"}
+            sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                height: "100vh",
+            }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+            {showInput ? <FormInput setShowInput={setShowInput} /> : ""}
+            <Button
+                variant="contained"
+                sx={{ marginTop: "30px" }}
+                onClick={() => setShowInput(true)}
+            >
+                Tambah
+            </Button>
+            <Box
+                sx={{
+                    mt: 3,
+                    gap: 4,
+                    display: "flex",
+                    flexWrap: "wrap",
+                    justifyContent: "center",
+                }}
+            >
+                <ListCard />
+            </Box>
+        </Box>
+    );
 }
 
 export default App;
