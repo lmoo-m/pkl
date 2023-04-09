@@ -1,13 +1,16 @@
 import React, { useState } from "react";
-import { TextField, CardActions, Button, Card } from "@mui/material";
+import { TextField, CardActions, Button, Card, Alert } from "@mui/material";
 import { generateDate } from "./dateFunction";
 import { nanoid } from "nanoid";
 
-const FormInput = ({ setShowInput, setJurnals }) => {
+const FormInput = ({ setShowInput, setJurnals, showInput }) => {
     const [kegiatan, setKegiatan] = useState("");
     const [waktu, setWaktu] = useState("");
+    const [textAlert, setTextAlert] = useState("");
 
     const tambah = () => {
+        if (kegiatan === "" || waktu === "")
+            return setTextAlert("isi dulu bang!");
         const data = {
             id: nanoid(),
             kegiatan: kegiatan,
@@ -18,25 +21,30 @@ const FormInput = ({ setShowInput, setJurnals }) => {
         setJurnals((prev) => {
             return [...prev, data];
         });
-        setShowInput(false);
+        setShowInput(-250);
+        setKegiatan("");
+        setWaktu("");
     };
 
     return (
         <Card
             sx={{
                 position: "absolute",
-                top: 20,
+                top: showInput,
                 zIndex: 99,
                 minWidth: 275,
+                transition: ".3s ease-in-out ",
                 display: "flex",
                 flexDirection: "column",
                 padding: "10px 20px",
             }}
         >
+            {textAlert ? <Alert severity="error">{textAlert}</Alert> : ""}
             <TextField
                 variant="standard"
                 label="Kegiatan"
                 onChange={(e) => setKegiatan(e.target.value)}
+                value={kegiatan}
                 sx={{ margin: "10px 0" }}
             />
             <TextField
@@ -44,6 +52,7 @@ const FormInput = ({ setShowInput, setJurnals }) => {
                 label="Waktu"
                 fullWidth={false}
                 onChange={(e) => setWaktu(e.target.value)}
+                value={waktu}
                 sx={{ margin: "10px 0" }}
                 placeholder="00:00 - 00:00"
             />
@@ -53,7 +62,7 @@ const FormInput = ({ setShowInput, setJurnals }) => {
                     sx={{ margin: "10px 0" }}
                     variant="contained"
                     color="warning"
-                    onClick={() => setShowInput(false)}
+                    onClick={() => setShowInput(-250)}
                 >
                     batal
                 </Button>

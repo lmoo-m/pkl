@@ -6,7 +6,7 @@ import ListCard from "./components/ListCard";
 import AddIcon from "@mui/icons-material/Add";
 
 function App() {
-    const [showInput, setShowInput] = useState(false);
+    const [showInput, setShowInput] = useState(-250);
     const [search, setSearch] = useState("");
     const [jurnals, setJurnals] = useState(() => {
         const localValue = localStorage.getItem("jurnal");
@@ -28,14 +28,11 @@ function App() {
                 height: "100vh",
             }}
         >
-            {showInput ? (
-                <FormInput
-                    setShowInput={setShowInput}
-                    setJurnals={setJurnals}
-                />
-            ) : (
-                ""
-            )}
+            <FormInput
+                setShowInput={setShowInput}
+                setJurnals={setJurnals}
+                showInput={showInput}
+            />
             <Box
                 sx={{
                     marginTop: "30px",
@@ -58,7 +55,7 @@ function App() {
                     />
                     <button
                         className="btn-icon"
-                        onClick={() => setShowInput(true)}
+                        onClick={() => setShowInput(20)}
                     >
                         <AddIcon sx={{ color: "white" }} />
                     </button>
