@@ -4,3 +4,19 @@
   padding: 0 10px;
   border-radius: 5px;
 } 
+
+.btn-icon{
+  background-color: #009FBD;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  padding: 8px;
+  transition: .3s;
+}
+
+.btn-icon:hover{
+  box-shadow: 0 0 10px white;
+}

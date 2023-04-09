@@ -1,8 +1,9 @@
 import "./App.css";
-import { Box, Button } from "@mui/material";
+import { Box } from "@mui/material";
 import FormInput from "./components/FormInput";
 import { useEffect, useState } from "react";
 import ListCard from "./components/ListCard";
+import AddIcon from "@mui/icons-material/Add";
 
 function App() {
     const [showInput, setShowInput] = useState(false);
@@ -55,12 +56,12 @@ function App() {
                         placeholder="cari..."
                         onChange={(e) => setSearch(e.target.value)}
                     />
-                    <Button
-                        variant="contained"
+                    <button
+                        className="btn-icon"
                         onClick={() => setShowInput(true)}
                     >
-                        Tambah
-                    </Button>
+                        <AddIcon sx={{ color: "white" }} />
+                    </button>
                 </Box>
             </Box>
             <Box

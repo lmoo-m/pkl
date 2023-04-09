@@ -6,11 +6,28 @@ import {
     CardActions,
     Typography,
 } from "@mui/material";
+import { Delete } from "@mui/icons-material";
+import Swal from "sweetalert2";
 
 const ListCard = ({ jurnals, setJurnals, search }) => {
     const deleteJurnal = (id) => {
-        setJurnals((item) => {
-            return item.filter((e) => e.id !== id);
+        const data = jurnals.filter((e) => e.id === id);
+        Swal.fire({
+            title: "Hapus? yakin deck?",
+            text: `Kegiatan: ${data[0].kegiatan}`,
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yoi",
+            cancelButtonText: "ngga jadi",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire("Terhapus", " ", "success");
+                setJurnals((item) => {
+                    return item.filter((e) => e.id !== id);
+                });
+            }
         });
     };
     return (
@@ -28,6 +45,8 @@ const ListCard = ({ jurnals, setJurnals, search }) => {
                                 .toLowerCase()
                                 .includes(search.toLowerCase())
                         ) {
+                            return jurnal;
+                        } else {
                             return jurnal;
                         }
                     })
@@ -67,6 +86,7 @@ const ListCard = ({ jurnals, setJurnals, search }) => {
                                     }}
                                 >
                                     <Button
+                                        startIcon={<Delete />}
                                         size="small"
                                         variant="contained"
                                         color="error"
