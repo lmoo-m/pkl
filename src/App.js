@@ -39,18 +39,29 @@ function App() {
                 sx={{
                     marginTop: "30px",
                     display: "flex",
-                    justifyContent: "space-between",
-                    width: "50%",
+                    width: "100%",
+                    justifyContent: "center",
                 }}
             >
-                <input
-                    className="search"
-                    placeholder="cari..."
-                    onChange={(e) => setSearch(e.target.value)}
-                />
-                <Button variant="contained" onClick={() => setShowInput(true)}>
-                    Tambah
-                </Button>
+                <Box
+                    sx={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        width: "90%",
+                    }}
+                >
+                    <input
+                        className="search"
+                        placeholder="cari..."
+                        onChange={(e) => setSearch(e.target.value)}
+                    />
+                    <Button
+                        variant="contained"
+                        onClick={() => setShowInput(true)}
+                    >
+                        Tambah
+                    </Button>
+                </Box>
             </Box>
             <Box
                 sx={{
