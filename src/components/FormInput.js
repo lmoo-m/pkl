@@ -26,6 +26,13 @@ const FormInput = ({ setShowInput, setJurnals, showInput }) => {
         setWaktu("");
     };
 
+    const cancel = () => {
+        setTextAlert("");
+        setShowInput(-250);
+        setKegiatan("");
+        setWaktu("");
+    };
+
     return (
         <Card
             sx={{
@@ -44,7 +51,7 @@ const FormInput = ({ setShowInput, setJurnals, showInput }) => {
                 variant="standard"
                 label="Kegiatan"
                 onChange={(e) => setKegiatan(e.target.value)}
-                value={kegiatan}
+                value={kegiatan || ""}
                 sx={{ margin: "10px 0" }}
             />
             <TextField
@@ -52,7 +59,7 @@ const FormInput = ({ setShowInput, setJurnals, showInput }) => {
                 label="Waktu"
                 fullWidth={false}
                 onChange={(e) => setWaktu(e.target.value)}
-                value={waktu}
+                value={waktu || ""}
                 sx={{ margin: "10px 0" }}
                 placeholder="00:00 - 00:00"
             />
@@ -62,10 +69,11 @@ const FormInput = ({ setShowInput, setJurnals, showInput }) => {
                     sx={{ margin: "10px 0" }}
                     variant="contained"
                     color="warning"
-                    onClick={() => setShowInput(-250)}
+                    onClick={() => cancel()}
                 >
                     batal
                 </Button>
+
                 <Button
                     size="small"
                     sx={{ margin: "10px 0" }}

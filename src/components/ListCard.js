@@ -6,10 +6,16 @@ import {
     CardActions,
     Typography,
 } from "@mui/material";
-import { Delete } from "@mui/icons-material";
+import { Delete, Edit } from "@mui/icons-material";
 import Swal from "sweetalert2";
+import { getJurnalById } from "../services/jurnalServices";
 
-const ListCard = ({ jurnals, setJurnals, search }) => {
+const ListCard = ({ jurnals, setJurnals, search, setShowEdit, setJurnal }) => {
+    const showJurnal = (id) => {
+        setJurnal(getJurnalById(id));
+        setShowEdit(20);
+    };
+
     const deleteJurnal = (id) => {
         const data = jurnals.filter((e) => e.id === id);
         Swal.fire({
@@ -23,7 +29,7 @@ const ListCard = ({ jurnals, setJurnals, search }) => {
             cancelButtonText: "ngga jadi",
         }).then((result) => {
             if (result.isConfirmed) {
-                Swal.fire("Terhapus", " ", "success");
+                Swal.fire("Terhapus", "", "success");
                 setJurnals((item) => {
                     return item.filter((e) => e.id !== id);
                 });
@@ -85,6 +91,15 @@ const ListCard = ({ jurnals, setJurnals, search }) => {
                                         justifyContent: "end",
                                     }}
                                 >
+                                    <Button
+                                        startIcon={<Edit />}
+                                        size="small"
+                                        variant="contained"
+                                        color="secondary"
+                                        onClick={() => showJurnal(data.id)}
+                                    >
+                                        edit
+                                    </Button>
                                     <Button
                                         startIcon={<Delete />}
                                         size="small"
