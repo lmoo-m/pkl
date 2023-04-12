@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import ListCard from "./components/ListCard";
 import AddIcon from "@mui/icons-material/Add";
 import FormEdit from "./components/FormEdit";
+import Navbar from "./components/Navbar";
 
 export let JurnalsPublic = [];
 
@@ -47,39 +48,20 @@ function App() {
                 showEdit={showEdit}
                 jurnals={jurnals}
             />
-            <Box
-                sx={{
-                    marginTop: "30px",
-                    display: "flex",
-                    width: "100%",
-                    justifyContent: "center",
+            <Navbar setSearch={setSearch} />
+            <button
+                className="btn-icon"
+                onClick={() => {
+                    setShowInput(20);
                 }}
             >
-                <Box
-                    sx={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        width: "90%",
-                    }}
-                >
-                    <input
-                        className="search"
-                        placeholder="cari..."
-                        onChange={(e) => setSearch(e.target.value)}
-                    />
-                    <button
-                        className="btn-icon"
-                        onClick={() => {
-                            setShowInput(20);
-                        }}
-                    >
-                        <AddIcon sx={{ color: "white" }} />
-                    </button>
-                </Box>
-            </Box>
+                <AddIcon sx={{ color: "white" }} />
+            </button>
             <Box
                 sx={{
-                    mt: 3,
+                    margin: "50px 0 10px 0",
+                    borderRadius: "5px",
+                    padding: "20px 0",
                     gap: 4,
                     display: "flex",
                     flexWrap: "wrap",

@@ -38,7 +38,7 @@ const ListCard = ({ jurnals, setJurnals, search, setShowEdit, setJurnal }) => {
     };
     return (
         <>
-            {jurnals &&
+            {jurnals.length > 0 ? (
                 jurnals
                     .filter((jurnal) => {
                         if (search === "") {
@@ -112,7 +112,42 @@ const ListCard = ({ jurnals, setJurnals, search, setShowEdit, setJurnal }) => {
                                 </CardActions>
                             </Card>
                         );
-                    })}
+                    })
+            ) : (
+                <Card
+                    sx={{
+                        minWidth: 275,
+                        maxWidth: 275,
+                        padding: "10px 15px",
+                        overflowWrap: "break-word",
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "center",
+                    }}
+                >
+                    <CardContent>
+                        <Typography
+                            sx={{ fontSize: 14 }}
+                            color="text.secondary"
+                            gutterBottom
+                        >
+                            pesan
+                        </Typography>
+                        <Typography variant="h5" component="div">
+                            Jurnal belum ada
+                        </Typography>
+                        <Typography color="text.secondary">
+                            untuk mencatat jurnal, klik icon plus(+)
+                        </Typography>
+                    </CardContent>
+                    <CardActions
+                        sx={{
+                            display: "flex",
+                            justifyContent: "end",
+                        }}
+                    ></CardActions>
+                </Card>
+            )}
         </>
     );
 };
