@@ -21,7 +21,7 @@ const FormEdit = ({ setShowEdit, setJurnal, showEdit, jurnal, jurnals }) => {
         }).then((result) => {
             if (result.isConfirmed) {
                 Swal.fire("Update", "", "success");
-                const data = jurnals.filter((e) => e.id == jurnal.id);
+                const data = jurnals.filter((e) => e.id === jurnal.id);
                 data[0].kegiatan = jurnal.kegiatan;
                 data[0].waktu = jurnal.waktu;
                 localStorage.setItem("jurnal", JSON.stringify(jurnals));
@@ -39,7 +39,7 @@ const FormEdit = ({ setShowEdit, setJurnal, showEdit, jurnal, jurnals }) => {
     return (
         <Card
             sx={{
-                position: "absolute",
+                position: "fixed",
                 top: showEdit,
                 zIndex: 99,
                 minWidth: 275,

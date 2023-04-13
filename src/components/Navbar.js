@@ -11,7 +11,7 @@ const Navbar = ({ setSearch }) => {
                 background: "#00ABB3",
                 position: "fixed",
                 top: 0,
-                zIndex: 99,
+                zIndex: 95,
                 padding: "10px 0",
                 display: "flex",
                 width: "100%",

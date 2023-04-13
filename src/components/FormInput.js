@@ -36,7 +36,7 @@ const FormInput = ({ setShowInput, setJurnals, showInput }) => {
     return (
         <Card
             sx={{
-                position: "absolute",
+                position: "fixed",
                 top: showInput,
                 zIndex: 99,
                 minWidth: 275,
